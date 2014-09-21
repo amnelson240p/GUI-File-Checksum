@@ -12,14 +12,16 @@ import javax.swing.JRadioButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Formatter;
 import java.awt.Font;
+
 import javax.swing.JTextArea;
+import javax.swing.ImageIcon;
+import javax.swing.SwingConstants;
 
 public class MainPanel extends JPanel {
 	/**
@@ -87,19 +89,19 @@ public class MainPanel extends JPanel {
 		add(btnBrowse);
 
 		rdbtnMD5 = new JRadioButton("MD5");
-		rdbtnMD5.setBounds(25, 145, 121, 23);
+		rdbtnMD5.setBounds(25, 145, 85, 23);
 		add(rdbtnMD5);
 
 		rdbtnSHA1 = new JRadioButton("SHA-1");
-		rdbtnSHA1.setBounds(25, 165, 121, 23);
+		rdbtnSHA1.setBounds(25, 165, 85, 23);
 		add(rdbtnSHA1);
 
 		rdbtnSHA256 = new JRadioButton("SHA-256");
-		rdbtnSHA256.setBounds(25, 185, 121, 23);
+		rdbtnSHA256.setBounds(25, 185, 85, 23);
 		add(rdbtnSHA256);
 
 		rdbtnSHA512 = new JRadioButton("SHA-512");
-		rdbtnSHA512.setBounds(25, 205, 121, 23);
+		rdbtnSHA512.setBounds(25, 205, 85, 23);
 		add(rdbtnSHA512);
 
 		btnVerify = new JButton("Verify");
@@ -124,25 +126,27 @@ public class MainPanel extends JPanel {
 				}
 			}
 		});
-		btnVerify.setBounds(261, 210, 98, 25);
+		btnVerify.setBounds(290, 216, 98, 25);
 		add(btnVerify);
 
 		lblVerified = new JLabel("Verified");
-		lblVerified.setBounds(279, 189, 55, 15);
+		lblVerified.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVerified.setBounds(336, 189, 55, 15);
 		lblVerified.setVisible(false);
 		add(lblVerified);
 
 		lblVerifyIcon = new JLabel("VerifyIcon");
-		lblVerifyIcon.setBounds(198, 189, 55, 15);
+		lblVerifyIcon.setIcon(new ImageIcon(MainPanel.class.getResource("/amnelson240p/quikchecksum/gui/images/Confirm_transparent.gif")));
+		lblVerifyIcon.setBounds(338, 141, 50, 50);
 		lblVerifyIcon.setVisible(false);
 		add(lblVerifyIcon);
 		
 		txtrGeneratedhash = new JTextArea();
 		txtrGeneratedhash.setEditable(false);
-		txtrGeneratedhash.setFont(new Font("Dialog", Font.PLAIN, 8));
+		txtrGeneratedhash.setFont(new Font("Dialog", Font.PLAIN, 10));
 		txtrGeneratedhash.setWrapStyleWord(true);
 		txtrGeneratedhash.setLineWrap(true);
-		txtrGeneratedhash.setBounds(154, 149, 200, 39);
+		txtrGeneratedhash.setBounds(118, 148, 191, 40);
 		txtrGeneratedhash.setText("");
 		add(txtrGeneratedhash);
 
@@ -165,6 +169,7 @@ public class MainPanel extends JPanel {
 				byte[] hash = mDigest.digest();
 
 				// convert to hex string
+				@SuppressWarnings("resource")
 				Formatter formatter = new Formatter();
 				for (byte b : hash) {
 					formatter.format("%02x", b);
@@ -182,6 +187,7 @@ public class MainPanel extends JPanel {
 				byte[] hash = mDigest.digest();
 
 				// convert to hex string
+				@SuppressWarnings("resource")
 				Formatter formatter = new Formatter();
 				for (byte b : hash) {
 					formatter.format("%02x", b);
@@ -199,6 +205,7 @@ public class MainPanel extends JPanel {
 				byte[] hash = mDigest.digest();
 
 				// convert to hex string
+				@SuppressWarnings("resource")
 				Formatter formatter = new Formatter();
 				for (byte b : hash) {
 					formatter.format("%02x", b);
@@ -216,6 +223,7 @@ public class MainPanel extends JPanel {
 				byte[] hash = mDigest.digest();
 
 				// convert to hex string
+				@SuppressWarnings("resource")
 				Formatter formatter = new Formatter();
 				for (byte b : hash) {
 					formatter.format("%02x", b);
@@ -223,6 +231,7 @@ public class MainPanel extends JPanel {
 				checksum = formatter.toString();
 				System.out.println("checksum: " + checksum);
 			}
+			fIS.close();
 		}
 		catch (IOException ex) {
 			

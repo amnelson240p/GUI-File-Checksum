@@ -13,6 +13,10 @@ import amnelson240p.quikchecksum.gui.MainPanel;
 
 public class QCDriverFrame extends JFrame {
 
+	/**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private MainPanel mPanel;
 
@@ -25,7 +29,7 @@ public class QCDriverFrame extends JFrame {
 				try {
 					QCDriverFrame frame = new QCDriverFrame();
 					frame.setVisible(true);
-					UIManager.setLookAndFeel(new NimbusLookAndFeel());
+					UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
