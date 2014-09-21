@@ -1,12 +1,9 @@
 package amnelson240p.quikchecksum;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-//import com.seaglasslookandfeel.*;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
 import amnelson240p.quikchecksum.gui.MainPanel;
 
 public class QCDriverFrame extends JFrame {
@@ -25,8 +22,8 @@ public class QCDriverFrame extends JFrame {
 	EventQueue.invokeLater(new Runnable() {
 	    public void run() {
 		try {
-		    //UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
-		    UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		    UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
+		    //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		    QCDriverFrame frame = new QCDriverFrame();
 		    frame.setVisible(true);
 
