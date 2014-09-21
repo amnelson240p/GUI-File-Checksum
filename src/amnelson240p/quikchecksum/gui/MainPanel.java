@@ -3,6 +3,9 @@ package amnelson240p.quikchecksum.gui;
 import javax.swing.JPanel;
 
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFileChooser;
@@ -25,6 +28,8 @@ import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 
+import java.awt.Color;
+
 public class MainPanel extends JPanel {
     /**
 	 * 
@@ -43,13 +48,22 @@ public class MainPanel extends JPanel {
     private JRadioButton rdbtnSHA512;
     private JButton btnClear;
     private JFileChooser fc;
+    private ImageIcon backIcon;
+
 
     /**
      * Create the panel.
      */
     public MainPanel() {
+    	setBackground(Color.ORANGE);
 	setPreferredSize(new Dimension(400, 300));
 	setLayout(null);
+	//this.setOpaque(false);
+
+	// load image
+		backIcon = new ImageIcon(this.getClass().getResource(
+			"/amnelson240p/quikchecksum/gui/images/QuikChksumBG.png"));
+	
 
 	fc = new JFileChooser();
 
@@ -137,6 +151,16 @@ public class MainPanel extends JPanel {
 				lblVerifyIcon.setVisible(true);
 				btnClear.setVisible(true);
 				btnVerify.setVisible(false);
+			    } 
+			    else {
+				// fail 
+				lblVerified.setText("Failed");
+				lblVerifyIcon.setIcon(new ImageIcon(MainPanel.class.getResource("/amnelson240p/quikchecksum/gui/images/Fail.png")));
+				
+				lblVerified.setVisible(true);
+				lblVerifyIcon.setVisible(true);
+				btnClear.setVisible(true);
+				btnVerify.setVisible(false);
 			    }
 			}
 		    }.start();
@@ -157,7 +181,7 @@ public class MainPanel extends JPanel {
 	lblVerifyIcon
 		.setIcon(new ImageIcon(
 			MainPanel.class
-				.getResource("/amnelson240p/quikchecksum/gui/images/Confirm_transparent.gif")));
+				.getResource("/amnelson240p/quikchecksum/gui/images/Confirm.png")));
 	lblVerifyIcon.setBounds(322, 180, 50, 50);
 	lblVerifyIcon.setVisible(false);
 	add(lblVerifyIcon);
@@ -172,9 +196,30 @@ public class MainPanel extends JPanel {
 	add(txtrGeneratedhash);
 
 	btnClear = new JButton("Clear");
+	btnClear.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent arg0) {
+		    lblVerifyIcon
+			.setIcon(new ImageIcon(
+				MainPanel.class
+					.getResource("/amnelson240p/quikchecksum/gui/images/Confirm.png")));
+		    lblVerifyIcon.setVisible(false);
+		    lblVerified.setText("Verified");
+		    lblVerified.setVisible(false);
+		    txtrGeneratedhash.setText("");
+		    txtFileName.setText("File");
+		    txtChksum.setText("Checksum");
+		    txtChksum.requestFocus();
+		    txtChksum.selectAll();
+		    btnVerify.setVisible(true);
+		    btnClear.setVisible(false);
+  
+		}
+	});
 	btnClear.setVisible(false);
 	btnClear.setBounds(172, 269, 95, 25);
 	add(btnClear);
+	
+	
 
     }
 
@@ -273,6 +318,7 @@ public class MainPanel extends JPanel {
 		System.out.println("checksum: " + checksum);
 	    }
 	    fIS.close();
+	    pm.close();
 	} catch (IOException ex) {
 
 	} catch (NoSuchAlgorithmException e) {
@@ -282,4 +328,12 @@ public class MainPanel extends JPanel {
 
 	return checksum;
     }
+    public void paintComponent(Graphics g)  {
+   	super.paintComponent(g);
+   	Graphics2D g2d = (Graphics2D)g;
+   	g.drawImage(backIcon.getImage(), 0, -40,  null);
+   	
+   	g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+       }
+    
 }
