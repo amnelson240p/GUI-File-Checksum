@@ -39,6 +39,7 @@ public class MainPanel extends JPanel {
 	private JRadioButton rdbtnSHA1;
 	private JRadioButton rdbtnSHA256;
 	private JRadioButton rdbtnSHA512;
+	private JButton btnClear;
 	private JFileChooser fc;
 
 	/**
@@ -121,23 +122,25 @@ public class MainPanel extends JPanel {
 					if (csumInput.equals(hash)) {
 						lblVerified.setVisible(true);
 						lblVerifyIcon.setVisible(true);
+						btnClear.setVisible(true);
+						btnVerify.setVisible(false);
 					}
 
 				}
 			}
 		});
-		btnVerify.setBounds(290, 216, 98, 25);
+		btnVerify.setBounds(296, 216, 98, 25);
 		add(btnVerify);
 
 		lblVerified = new JLabel("Verified");
 		lblVerified.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVerified.setBounds(336, 189, 55, 15);
+		lblVerified.setBounds(318, 193, 55, 15);
 		lblVerified.setVisible(false);
 		add(lblVerified);
 
 		lblVerifyIcon = new JLabel("VerifyIcon");
 		lblVerifyIcon.setIcon(new ImageIcon(MainPanel.class.getResource("/amnelson240p/quikchecksum/gui/images/Confirm_transparent.gif")));
-		lblVerifyIcon.setBounds(338, 141, 50, 50);
+		lblVerifyIcon.setBounds(320, 145, 50, 50);
 		lblVerifyIcon.setVisible(false);
 		add(lblVerifyIcon);
 		
@@ -146,9 +149,14 @@ public class MainPanel extends JPanel {
 		txtrGeneratedhash.setFont(new Font("Dialog", Font.PLAIN, 10));
 		txtrGeneratedhash.setWrapStyleWord(true);
 		txtrGeneratedhash.setLineWrap(true);
-		txtrGeneratedhash.setBounds(118, 148, 191, 40);
+		txtrGeneratedhash.setBounds(118, 148, 191, 60);
 		txtrGeneratedhash.setText("");
 		add(txtrGeneratedhash);
+		
+		btnClear = new JButton("Clear");
+		btnClear.setVisible(false);
+		btnClear.setBounds(174, 216, 95, 25);
+		add(btnClear);
 
 	}
 
