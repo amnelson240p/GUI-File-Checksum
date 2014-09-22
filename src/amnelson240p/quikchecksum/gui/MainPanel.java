@@ -250,11 +250,13 @@ public class MainPanel extends JPanel {
 					}.start();
 
 				} // user picked a file
-				else {
+				else if (!isFileSelected) {
 					// no file selected
 					// notify user to select file - message
 					noFileError = true;
 					System.out.println("user did not select a file");
+					repaint();
+				} else {
 					repaint();
 				}
 			}
