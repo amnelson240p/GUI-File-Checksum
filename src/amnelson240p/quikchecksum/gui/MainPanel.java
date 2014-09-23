@@ -115,6 +115,7 @@ public class MainPanel extends JPanel {
 
 	rdbtnMD5 = new JRadioButton("MD5");
 	rdbtnMD5.setBounds(20, 178, 85, 23);
+	rdbtnMD5.setSelected(true);
 	add(rdbtnMD5);
 	rdbtnMD5.addActionListener(new ActionListener() {
 
@@ -463,7 +464,7 @@ public class MainPanel extends JPanel {
 	if (badChkString) {
 	    g.setColor(Color.DARK_GRAY);
 	    // g.drawRect(130, 40, 150, 20);
-	    g.fillRect(134, 40, 150, 16);
+	    g.fillRect(132, 40, 150, 16);
 	    g.setColor(Color.RED);
 	    g.drawString(BAD_STRING_ERROR, 140, 53);
 	    // badChkString = false;
