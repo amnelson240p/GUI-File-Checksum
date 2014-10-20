@@ -432,7 +432,7 @@ public class MainPanel extends JPanel {
 
 	} else if (rdbtnSHA256.isSelected()) {
 	    // SHA256 has 64 char length hex string
-	    if (csumInput.length() == 65) {
+	    if (csumInput.length() == 64) {
 		isValid = true;
 	    }
 
