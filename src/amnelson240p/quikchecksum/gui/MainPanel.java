@@ -413,11 +413,19 @@ public class MainPanel extends JPanel {
 	return checksum;
     }
 
+    // checkInpuSum() verifies user pasted string as a proper hash string.
+    // cleans up spaces and maintains consistency for expected hash strings
     public boolean checkInputSum() {
 	boolean isValid = false;
 	String csumInput = txtChksum.getText();
-	csumInput.trim(); // clean string
-
+	csumInput = csumInput.trim(); // clean string of trailing spaces
+	csumInput = csumInput.replaceAll("\\s", ""); // remove any spaces in-between
+	csumInput = csumInput.toLowerCase(); // converts to lower case hash for consistency
+	System.out.println("hash: " + csumInput);
+	
+	// replace input with fixed string
+	txtChksum.setText(csumInput);
+	
 	if (rdbtnMD5.isSelected()) {
 	    // MD5 has 32 char length
 	    if (csumInput.length() == 32) {
