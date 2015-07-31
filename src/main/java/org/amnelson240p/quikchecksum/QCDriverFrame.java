@@ -1,14 +1,13 @@
-package amnelson240p.quikchecksum;
+package org.amnelson240p.quikchecksum;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-import amnelson240p.quikchecksum.gui.MainPanel;
+import org.amnelson240p.quikchecksum.gui.MainPanel;;
 
 public class QCDriverFrame extends JFrame {
 

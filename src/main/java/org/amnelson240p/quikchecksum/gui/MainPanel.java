@@ -1,4 +1,4 @@
-package amnelson240p.quikchecksum.gui;
+package org.amnelson240p.quikchecksum.gui;
 
 import javax.swing.JPanel;
 
@@ -65,7 +65,7 @@ public class MainPanel extends JPanel {
 
 	// load image
 	backIcon = new ImageIcon(this.getClass().getResource(
-		"/amnelson240p/quikchecksum/gui/images/QuikChksumBG.png"));
+		"/org/amnelson240p/quikchecksum/gui/images/QuikChksumBG.png"));
 
 	fc = new JFileChooser();
 	isFileSelected = false;
@@ -230,7 +230,7 @@ public class MainPanel extends JPanel {
 				lblVerified.setText("Failed");
 				lblVerifyIcon.setIcon(new ImageIcon(
 					MainPanel.class
-						.getResource("/amnelson240p/quikchecksum/gui/images/Fail.png")));
+						.getResource("/org/amnelson240p/quikchecksum/gui/images/Fail.png")));
 
 				lblVerified.setVisible(true);
 				lblVerifyIcon.setVisible(true);
@@ -267,7 +267,7 @@ public class MainPanel extends JPanel {
 	lblVerifyIcon
 		.setIcon(new ImageIcon(
 			MainPanel.class
-				.getResource("/amnelson240p/quikchecksum/gui/images/Confirm.png")));
+				.getResource("/org/amnelson240p/quikchecksum/gui/images/Confirm.png")));
 	lblVerifyIcon.setBounds(322, 180, 50, 50);
 	lblVerifyIcon.setVisible(false);
 	add(lblVerifyIcon);
@@ -286,7 +286,7 @@ public class MainPanel extends JPanel {
 	    public void actionPerformed(ActionEvent arg0) {
 		lblVerifyIcon.setIcon(new ImageIcon(
 			MainPanel.class
-				.getResource("/amnelson240p/quikchecksum/gui/images/Confirm.png")));
+				.getResource("/org/amnelson240p/quikchecksum/gui/images/Confirm.png")));
 		lblVerifyIcon.setVisible(false);
 		lblVerified.setText("Verified");
 		lblVerified.setVisible(false);
